@@ -1,0 +1,4 @@
+# English strings go here for Rails i18n
+en:
+  nikoniko_calendar: "Niko-niko Calendar"
+  nikoniko_calendar_short: "Niko Cal"
