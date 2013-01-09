@@ -1,3 +1,3 @@
 class NikonikoHistory < ActiveRecord::Base
-  unloadable
+  unloadable  
 end

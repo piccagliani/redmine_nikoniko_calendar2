@@ -5,5 +5,5 @@ Redmine::Plugin.register :redmine_nikoniko_calendar2 do
   version '0.0.1'
   url 'https://github.com/gliani/redmine_nikoniko_calendar2'
 
-  menu :application_menu, :nikoniko_calendar, { :controller => 'NikonikoCalendar', :action => 'index' }, :caption => :nikoniko_calendar
+  menu :application_menu, :nikoniko_calendar, { :controller => :nikoniko_calendar, :action => :index }, :caption => :nikoniko_calendar
 end

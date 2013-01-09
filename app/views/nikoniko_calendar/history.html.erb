@@ -1,0 +1,41 @@
+<p>
+<%
+prev_label = "« " + @prev_month.year.to_s + "-" + @prev_month.month.to_s
+next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
+%>
+<%= link_to prev_label, nikoniko_calendar_history_path(:year => @prev_month.year, :month => @prev_month.month), {:class => "nikoniko_history_pager"} %>
+<% if @next_month < @today  %>
+|
+<%= link_to next_label, nikoniko_calendar_history_path(:year => @next_month.year, :month => @next_month.month), {:class => "nikoniko_history_pager"} %>
+<% end %>
+</p>
+
+<table class="cal nikoniko_calendar">
+<thead>
+<tr><th class="week-number" colspan="8"><span id="CurrentMonth"><%= @target_month.year.to_s + "-" + @target_month.month.to_s %></span></th><tr>
+<tr><th scope="col" title="<%= l(:label_week) %>" class="week-number"></th><% 7.times do |i| %><th scope="col"><%= day_name( (@calendar.first_wday+i)%7 ) %></th><% end %></tr>
+</thead>
+<tbody>
+<tr>
+<% 
+day = @calendar.startdt
+while day <= @calendar.enddt
+%>
+<%= ("<td class='week-number' title='#{ l(:label_week) }'>#{(day+(11-day.cwday)%7).cweek}</td>".html_safe) if day.cwday == @calendar.first_wday %>
+<td class="<%= day.month==@calendar.month ? 'even' : 'odd' %><%= ' today' if Date.today == day %>">
+<p class="day-num"><%= day.day %></p>
+<% if (history = @nikoniko_history[day.to_s]) != nil %>
+<% history.niko = "0" if history.niko == "" %>
+<a class="nikoniko_history" href="#<%= day.to_s %>" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></a>
+<% elsif day <= @today %>
+<a class="nikoniko_history" href="#<%= day.to_s %>" title="未登録"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></a>
+<% end %>
+</td>
+<%= '</tr><tr>'.html_safe if day.cwday==@calendar.last_wday and day!=@calendar.enddt %>
+<% 
+day = day + 1
+end
+%>
+</tr>
+</tbody>
+</table>

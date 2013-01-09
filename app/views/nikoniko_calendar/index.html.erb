@@ -1,1 +1,29 @@
-<h2>NikonikoCalendarController#index</h2>
+<% if false %> ######## HEADER <% end %>
+<% content_for :header_tags  do %>
+<%= stylesheet_link_tag "index", :plugin => 'redmine_nikoniko_calendar2' %>
+<%= javascript_include_tag "common", "index", :plugin => 'redmine_nikoniko_calendar2' %>
+<% end %>
+
+<% if false %> ######## MAIN CONTENTS <% end %>
+<h2><%= l(:nikoniko_calendar) %></h2>
+
+<h3>ダッシュボード</h3>
+
+<h4>ニコニコ履歴</h4>
+<div class="h4_contents">
+    <div id="NikonikoCalendar"></div>
+</div>
+
+<div id="NikonikoUpdateDialog" style="display:none">
+    <form id="NikonikoUpdateForm">
+        <div>
+            <a href="#"><%= image_tag("nikoniko_0.png", :plugin => 'redmine_nikoniko_calendar2', :style => "display:none", :alt => "未登録") %></a>
+            <a href="#"><%= image_tag("nikoniko_1.png", :plugin => 'redmine_nikoniko_calendar2', :style => "display:none", :alt => "悪い") %></a>
+            <a href="#"><%= image_tag("nikoniko_2.png", :plugin => 'redmine_nikoniko_calendar2', :style => "display:none", :alt => "普通") %></a>
+            <a href="#"><%= image_tag("nikoniko_3.png", :plugin => 'redmine_nikoniko_calendar2', :style => "display:none", :alt => "良い") %></a>
+        </div>
+        <input type="hidden" name="date" value="">
+        <input type="text" name="comment" maxlength="140" /><br />
+        <input type="button" value="送信" /> 
+    </form>
+</div>
