@@ -27,7 +27,15 @@ class NikonikoCalendarController < ApplicationController
 
     # get user's nikoniko
     @nikoniko_history = {};
-    nikoniko_history_tmp = NikonikoHistory.find(:all, :conditions => ["user_id = ? AND ? <= date AND date <= ?", User.current.id, @calendar.startdt.to_s, @calendar.enddt.to_s], :order => "date ASC")
+    nikoniko_history_tmp = NikonikoHistory.find(
+      :all, 
+      :conditions => ["user_id = :user_id AND :start_date <= date AND date <= :end_date", {
+        :user_id => User.current.id,
+        :start_date => @calendar.startdt.to_s,
+        :end_date => @calendar.enddt.to_s
+      }],
+      :order => "date ASC"
+    )
     nikoniko_history_tmp.each do |n|
       @nikoniko_history[n.date.to_s] = n
     end

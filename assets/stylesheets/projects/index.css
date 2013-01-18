@@ -1,0 +1,20 @@
+table.cal thead th {
+    width: 12%;
+}
+
+
+table.cal tbody tr {
+    height: auto;
+}
+
+.nikoniko_calendar th.member {
+    width: auto;
+    background-color:#EEEEEE;
+    padding: 4px;
+    border:none;
+    font-size: 1em;    
+}
+
+.nikoniko_calendar td {
+    text-align:center;
+}

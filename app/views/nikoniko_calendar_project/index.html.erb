@@ -1,0 +1,41 @@
+<% content_for :header_tags  do %>
+<%= stylesheet_link_tag "projects/index", :plugin => 'redmine_nikoniko_calendar2' %>
+<% end %>
+
+
+<h2><%= l(:nikoniko_calendar) %></h2>
+
+
+<table class="cal nikoniko_calendar">
+    <thead>
+        <tr>
+            <th class="member">&nbsp;</th>
+            <% for i in 0..6 do %>
+            <th><%= @start_date + i%></th>
+            <% end %>
+        </tr>
+    </thead>
+    <tbody>
+        <% @members.each do |member| %>
+        <% logger.info(member) %>
+        <tr>
+            <th class="member"><%= member %></th>
+            <% for i in 0..6 do %>
+            <td><p class="day-num">&nbsp;</p>
+                <% date = @start_date + i %>
+                <% if date <= @today %>
+                    <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][date.to_s]) == nil%>
+            <td><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></td>
+                    <% else %>
+                        <% history.niko = "0" if history.niko == "" %>
+            <td><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %><%=  %></td>
+                    <% end %>
+                <% else %>
+            <td>&nbsp;</td>
+                <% end %>
+            <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
