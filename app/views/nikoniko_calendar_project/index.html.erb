@@ -21,7 +21,6 @@
         <tr>
             <th class="member"><%= member %></th>
             <% for i in 0..6 do %>
-            <td><p class="day-num">&nbsp;</p>
                 <% date = @start_date + i %>
                 <% if date <= @today %>
                     <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][date.to_s]) == nil%>
