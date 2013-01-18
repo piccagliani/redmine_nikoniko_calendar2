@@ -27,7 +27,7 @@
             <td><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></td>
                     <% else %>
                         <% history.niko = "0" if history.niko == "" %>
-            <td><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %><%=  %></td>
+            <td><a href="javascript:void(0);" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %><%=  %></a></td>
                     <% end %>
                 <% else %>
             <td>&nbsp;</td>
