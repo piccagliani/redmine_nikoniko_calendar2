@@ -1,20 +1,41 @@
-table.cal thead th {
-    width: 12%;
-}
-
-
 table.cal tbody tr {
     height: auto;
 }
 
-.nikoniko_calendar th.member {
-    width: auto;
-    background-color:#EEEEEE;
-    padding: 4px;
-    border:none;
-    font-size: 1em;    
+table.cal thead th,
+table.cal tbody td {
+    text-align: center;
+    width: 40px;
+    padding: 0;
 }
 
-.nikoniko_calendar td {
-    text-align:center;
+.fixedTable {
+    margin-top: 1px;
+}
+
+.fixedHead table,
+.fixedTable table {
+    border-collapse: collapse;
+}
+
+.fixedHead td,
+.fixedTable td {
+    padding: 0;
+    border: 1px solid #d7d7d7;
+    vertical-align: middle;
+}
+
+.fixedHead td {
+    text-align: center;
+    width: 40px;
+    background-color: #EEEEEE;
+}
+
+.fixedHead td.member {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+.fixedTable td.member {
+    padding-left: 2px;
+    background-color: #EEEEEE;
 }
