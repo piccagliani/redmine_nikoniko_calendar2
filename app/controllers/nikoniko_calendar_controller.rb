@@ -39,7 +39,13 @@ class NikonikoCalendarController < ApplicationController
     nikoniko_history_tmp.each do |n|
       @nikoniko_history[n.date.to_s] = n
     end
-
+    
+    # get average
+    @nikoniko_average = NikonikoHistory.get_average_for_user(User.current.id, @target_month, @next_month - 1)
+    
+    # get summary
+    @nikoniko_summary = NikonikoHistory.get_summary_for_user(User.current.id, @target_month, @next_month - 1)
+logger.info(@nikoniko_summary)
     render :layout => false if request.xhr?
   end
 

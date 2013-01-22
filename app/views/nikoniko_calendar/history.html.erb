@@ -10,6 +10,7 @@ next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
 <% end %>
 </p>
 
+<div class="splitcontentleft">
 <table class="cal nikoniko_calendar">
 <thead>
 <tr><th class="week-number" colspan="8"><span id="CurrentMonth"><%= @target_month.year.to_s + "-" + @target_month.month.to_s %></span></th><tr>
@@ -39,3 +40,50 @@ end
 </tr>
 </tbody>
 </table>
+</div>
+
+<div class="splitcontentright">
+    <div id="NikonikoAverageContainer">
+        <h4>ニコニコスコア</h4>
+        <div class="splitcontentleft">
+            <canvas id="NikonikoAverage"></canvas>
+            <script type="text/javascript">
+            app.nikonikoAverage = <%= @nikoniko_average %>; 
+            </script>
+        </div>
+        <div class="splitcontentright">
+            <span class="big"><%= @nikoniko_average %></span>ニコ
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div id="NikonikoSummaryContainer">
+        <h4>ニコニコサマリ</h4>
+        <div class="splitcontentleft">
+            <div id="NikonikoSummary"></div>
+            <script type="text/javascript">
+            app.nikonikoSummary = [[['未登録',<%= @nikoniko_summary["0"] %>],['悪い',<%= @nikoniko_summary["1"] %>],['普通',<%= @nikoniko_summary["2"] %>],['良い',<%= @nikoniko_summary["3"] %>]]]
+            </script>
+        </div>
+        <div class="splitcontentright">
+            <table class="list">
+                <tr class="odd">
+                    <td width="20%"><%= image_tag("nikoniko_0.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "未登録") %></td>
+                    <td width="auto"><%= @nikoniko_summary["0"] %>日</td>
+                </tr>
+                <tr class="even">
+                    <td><%= image_tag("nikoniko_1.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "悪い") %></td>
+                    <td><%= @nikoniko_summary["1"] %>日</td>
+                </tr>
+                <tr class="odd">
+                    <td><%= image_tag("nikoniko_2.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "普通") %></td>
+                    <td><%= @nikoniko_summary["2"] %>日</td>
+                </tr>
+                <tr class="even">
+                    <td><%= image_tag("nikoniko_3.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "良い") %></td>
+                    <td><%= @nikoniko_summary["3"] %>日</td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>

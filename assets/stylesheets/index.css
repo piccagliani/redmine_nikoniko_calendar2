@@ -5,3 +5,36 @@
 .nikoniko_calendar td {
     text-align:center;
 }
+
+.splitcontentleft {
+    width: 60%;
+}
+
+.splitcontentright {
+    width: 38%;
+}
+
+#NikonikoAverageContainer .splitcontentleft,
+#NikonikoAverageContainer .splitcontentright,
+#NikonikoSummaryContainer .splitcontentleft,
+#NikonikoSummaryContainer .splitcontentright {
+    width: 49%;
+}
+
+#NikonikoAverageContainer {
+    margin-bottom: 10px;
+}
+
+#NikonikoAverageContainer .splitcontentright {
+    padding-top: 45px;
+}
+
+#NikonikoAverageContainer .splitcontentright .big {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#NikonikoSummary {
+    border: 1px solid #e4e4e4;
+}
+

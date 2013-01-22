@@ -1,15 +1,18 @@
 <% if false %> ######## HEADER <% end %>
 <% content_for :header_tags  do %>
+<%= stylesheet_link_tag "vendor/jquery.jqplot.css", :plugin => 'redmine_nikoniko_calendar2' %>
 <%= stylesheet_link_tag "index", :plugin => 'redmine_nikoniko_calendar2' %>
-<%= javascript_include_tag "common", "index", :plugin => 'redmine_nikoniko_calendar2' %>
+<%= javascript_include_tag "vendor/gauge.min.js", "vendor/jquery.jqplot.js", "vendor/plugins/jqplot.pieRenderer.js",:plugin => 'redmine_nikoniko_calendar2' %>
+<!--[if lt IE 9]>
+<%= javascript_include_tag "vendor/excanvas.js", :plugin => 'redmine_nikoniko_calendar2' %>
+<![endif]-->
+<%= javascript_include_tag "common", "index",:plugin => 'redmine_nikoniko_calendar2' %>
 <% end %>
 
 <% if false %> ######## MAIN CONTENTS <% end %>
 <h2><%= l(:nikoniko_calendar) %></h2>
 
-<h3>ダッシュボード</h3>
-
-<h4>ニコニコ履歴</h4>
+<h3>ニコニコ履歴</h3>
 <div class="h4_contents">
     <div id="NikonikoCalendar"></div>
 </div>
