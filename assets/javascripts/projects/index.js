@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     var fixedWidth = $("#content").width() - 20;
     var fixedHeight = $("#NikonikoCalendar .cal").outerHeight(); 
