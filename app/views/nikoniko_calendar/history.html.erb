@@ -30,7 +30,7 @@ next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
 <div class="splitcontentleft">
 <table class="cal nikoniko_calendar">
 <thead>
-<tr><th class="week-number" colspan="8"><span id="CurrentMonth"><%= @target_month.year.to_s + "-" + @target_month.month.to_s %></span></th><tr>
+<tr><th class="week-number" colspan="8"><span id="CurrentMonth"><%= @target_month.year.to_s + "-" + @target_month.month.to_s %></span></th></tr>
 <tr><th scope="col" title="<%= l(:label_week) %>" class="week-number"></th><% 7.times do |i| %><th scope="col"><%= day_name( (@calendar.first_wday+i)%7 ) %></th><% end %></tr>
 </thead>
 <tbody>
