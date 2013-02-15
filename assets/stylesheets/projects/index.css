@@ -1,3 +1,7 @@
+table.cal {
+	margin-bottom: 0;
+}
+
 table.cal tbody tr {
     height: auto;
 }

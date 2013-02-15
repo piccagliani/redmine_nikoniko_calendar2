@@ -55,6 +55,5 @@ class NikonikoCalendarProjectController < ApplicationController
       @nikoniko_histories[n.user_id] = {} if @nikoniko_histories[n.user_id] == nil
       @nikoniko_histories[n.user_id][n.date.to_s] = n
     end
-    logger.info(@nikoniko_histories);
   end
 end

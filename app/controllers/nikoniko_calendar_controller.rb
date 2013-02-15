@@ -60,7 +60,7 @@ class NikonikoCalendarController < ApplicationController
     
     # get summary
     @nikoniko_summary = NikonikoHistory.get_summary_for_user(User.current.id, @target_month, @next_month - 1)
-logger.info(@nikoniko_summary)
+
     render :layout => false if request.xhr?
   end
 

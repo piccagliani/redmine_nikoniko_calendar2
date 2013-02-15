@@ -34,7 +34,7 @@ class NikonikoHistory < ActiveRecord::Base
     result = self.find(
       :all,
       :select => "avg(niko) AS niko",
-      :conditions => ["user_id = :user_id AND :start_date <= date AND date <= :end_date", {
+      :conditions => ["niko != 0 AND user_id = :user_id AND :start_date <= date AND date <= :end_date", {
           :user_id => user_id,
           :start_date => start_date.to_s,
           :end_date => end_date.to_s
