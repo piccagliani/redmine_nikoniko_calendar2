@@ -17,16 +17,24 @@ class NikonikoHistory < ActiveRecord::Base
   unloadable
 
   belongs_to :user
-  def self.find_with_project_and_member(project_id, start_date, end_date)
+  def self.find_with_project_and_member(project_id, start_date, end_date, roles)
+    condition = "projects.identifier = :project_id and :start_date <= nikoniko_histories.date and nikoniko_histories.date <= :end_date"
+    binds = {
+      :project_id => project_id,
+      :start_date => start_date.to_s,
+      :end_date => end_date.to_s
+    }
+
+    if roles != nil
+      condition += " and member_roles.role_id in(:role_ids)"
+      binds[:role_ids] = roles
+    end
+
     self.find(
       :all,
-      :conditions => ["projects.identifier = :project_id and :start_date <= nikoniko_histories.date and nikoniko_histories.date <= :end_date", {
-          :project_id => project_id,
-          :start_date => start_date.to_s,
-          :end_date => end_date.to_s
-        }],
+      :conditions => [condition, binds],
       :order => "nikoniko_histories.user_id asc, nikoniko_histories.date asc",
-      :include => {:user => {:members => [:project]}}
+      :include => {:user => {:members => [:project, :member_roles]}}
     )
   end
 
@@ -35,10 +43,10 @@ class NikonikoHistory < ActiveRecord::Base
       :all,
       :select => "avg(niko) AS niko",
       :conditions => ["niko != 0 AND user_id = :user_id AND :start_date <= date AND date <= :end_date", {
-          :user_id => user_id,
-          :start_date => start_date.to_s,
-          :end_date => end_date.to_s
-        }],
+        :user_id => user_id,
+        :start_date => start_date.to_s,
+        :end_date => end_date.to_s
+      }],
     )
     average = result[0].niko == nil ? 0.0 : (result[0].niko / 3.0 * 1000).round / 10.0
   end
@@ -48,10 +56,10 @@ class NikonikoHistory < ActiveRecord::Base
       :all,
       :select => "niko, COUNT(id) AS count",
       :conditions => ["user_id = :user_id AND :start_date <= date AND date <= :end_date", {
-          :user_id => User.current.id,
-          :start_date => start_date.to_s,
-          :end_date => end_date.to_s
-        }],
+        :user_id => User.current.id,
+        :start_date => start_date.to_s,
+        :end_date => end_date.to_s
+      }],
       :group => "niko",
       :order => "niko ASC"
     )

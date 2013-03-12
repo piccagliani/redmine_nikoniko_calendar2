@@ -15,55 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %>
-<% content_for :header_tags  do %>
+<% content_for :header_tags do %>
 <%= stylesheet_link_tag "projects/index", :plugin => 'redmine_nikoniko_calendar2' %>
 <%= javascript_include_tag "vendor/jquery.fixedtable.js", "common", "projects/index", :plugin => 'redmine_nikoniko_calendar2' %>
 <% end %>
 
-
 <h2><%= l(:nikoniko_calendar) %></h2>
 
 <div id="NikonikoCalendar">
-<table class="cal nikoniko_calendar">
-    <thead>
-        <tr>
-            <th class="member">&nbsp;</th>
-            <% 
-            day = @calendar.startdt
-            while day <= @calendar.enddt
-            %>
-            <th><%= day.day %></th>
-            <%
-            day = day + 1 
-            end
-            %>
-        </tr>
-    </thead>
-    <tbody>
-        <% @members.each do |member| %>
-        <% logger.info(member) %>
-        <tr>
-            <td class="member"><%= member %></td>
-            <% 
-            day = @calendar.startdt
-            while day <= @calendar.enddt
-            %>
-                <% if day <= @today %>
-                    <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][day.to_s]) == nil%>
-            <td><%= image_tag "nikoniko_0.png", :class => "niko", :width => "36", :height => "36", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></td>
-                    <% else %>
-                        <% history.niko = "0" if history.niko == "" %>
-            <td><a href="javascript:void(0);" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "36", :height => "36", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></a></td>
-                    <% end %>
-                <% else %>
-            <td><%= image_tag "spacer.gif", :class => "niko", :width => "36", :height => "36", :alt => "", :plugin => "redmine_nikoniko_calendar2" %></td>
-                <% end %>
-            <%
-            day = day + 1 
-            end
-            %>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+
 </div>
+<% content_for :sidebar do %>
+<h3>ロール</h3>
+<% for role in @roles %>
+<label><input type="checkbox" name="role" value="<%= role.id %>" /><%= h role.name %></label>
+<% end %>
+<p><input id="ApplyButton" class="button-small" type="button" value="<%= l(:button_apply) %>"></p>
+<% end %>

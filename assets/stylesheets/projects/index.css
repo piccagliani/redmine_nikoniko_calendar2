@@ -43,3 +43,7 @@ table.cal tbody td {
     padding-left: 2px;
     background-color: #EEEEEE;
 }
+
+#sidebar label {
+    display: block;
+}
