@@ -47,3 +47,11 @@ table.cal tbody td {
 #sidebar label {
     display: block;
 }
+
+td.Sat {
+    background-color: #F0F8FF;
+}
+
+td.Sun {
+    background-color: #FFF0F5;
+}
