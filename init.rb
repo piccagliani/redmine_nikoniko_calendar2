@@ -1,5 +1,5 @@
 # Niko-niko Calendar plugin for Redmine 2.X
-# Copyright (C) 2013 gliani
+# Copyright (C) 2013 piccagliani
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,10 +16,10 @@
 
 Redmine::Plugin.register :redmine_nikoniko_calendar2 do
   name 'Redmine Niko-niko Calendar2 plugin'
-  author 'gliani'
+  author 'piccagliani'
   description 'Niko-niko Calendar plugin for Redmine 2.X'
   version '0.0.1'
-  url 'https://github.com/gliani/redmine_nikoniko_calendar2'
+  url 'https://github.com/piccagliani/redmine_nikoniko_calendar2'
 
   menu :account_menu, :nikoniko_calendar, { :controller => 'nikoniko_calendar', :action => 'index' }, :caption => :nikoniko_calendar, :after => :my_account
 

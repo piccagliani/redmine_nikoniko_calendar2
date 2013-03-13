@@ -1,5 +1,5 @@
 # Niko-niko Calendar plugin for Redmine 2.X
-# Copyright (C) 2013 gliani
+# Copyright (C) 2013 piccagliani
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
