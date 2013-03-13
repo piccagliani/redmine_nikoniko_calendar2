@@ -127,7 +127,7 @@ NikoCal.Index = function() {
 
         renderSummaryChart : function() {
             $.jqplot('NikonikoSummary', app.nikonikoSummary, {
-                seriesColors : ["#E0E0E0", "#434343", "#EEEE07", "#48B1F2"],
+                seriesColors : ["#48B1F2", "#EEEE07", "#434343", "#E0E0E0"],
                 seriesDefaults : {
                     renderer : jQuery.jqplot.PieRenderer
                 },

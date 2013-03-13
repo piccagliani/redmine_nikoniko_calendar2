@@ -2,3 +2,12 @@
 en:
   nikoniko_calendar: "Niko-niko Calendar"
   nikoniko_calendar_short: "Niko Cal"
+  nikoniko_calendar_history: "Niko-niko History"
+  nikoniko_score: "Niko-niko Score"
+  nikoniko_score_unit: "niko"
+  nikoniko_summary: "Niko-niko Summary"
+  nikoniko_feel_nil: "Not Registered"
+  nikoniko_feel_good: "Good"
+  nikoniko_feel_ordinary: "Ordinary"
+  nikoniko_feel_bad: "Bad"
+  

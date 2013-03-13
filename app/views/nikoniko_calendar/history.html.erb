@@ -44,9 +44,9 @@ while day <= @calendar.enddt
 <p class="day-num"><%= day.day %></p>
 <% if (history = @nikoniko_history[day.to_s]) != nil %>
 <% history.niko = "0" if history.niko == "" %>
-<a class="nikoniko_history" href="#<%= day.to_s %>" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></a>
+<a class="nikoniko_history" href="#<%= day.to_s %>" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
 <% elsif day <= @today %>
-<a class="nikoniko_history" href="#<%= day.to_s %>" title="未登録"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :alt => "未登録", :plugin => "redmine_nikoniko_calendar2" %></a>
+<a class="nikoniko_history" href="#<%= day.to_s %>"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
 <% end %>
 </td>
 <%= '</tr><tr>'.html_safe if day.cwday==@calendar.last_wday and day!=@calendar.enddt %>
@@ -61,7 +61,7 @@ end
 
 <div class="splitcontentright">
     <div id="NikonikoAverageContainer">
-        <h4>ニコニコスコア</h4>
+        <h4><%= l(:nikoniko_score) %></h4>
         <div class="splitcontentleft">
             <canvas id="NikonikoAverage"></canvas>
             <script type="text/javascript">
@@ -69,35 +69,40 @@ end
             </script>
         </div>
         <div class="splitcontentright">
-            <span class="big"><%= @nikoniko_average %></span>ニコ
+            <span class="big"><%= @nikoniko_average %></span><%= l(:nikoniko_score_unit) %>
         </div>
         <div style="clear:both;"></div>
     </div>
     <div id="NikonikoSummaryContainer">
-        <h4>ニコニコサマリ</h4>
+        <h4><%= l(:nikoniko_summary) %></h4>
         <div class="splitcontentleft">
             <div id="NikonikoSummary"></div>
             <script type="text/javascript">
-            app.nikonikoSummary = [[['未登録',<%= @nikoniko_summary["0"] %>],['悪い',<%= @nikoniko_summary["1"] %>],['普通',<%= @nikoniko_summary["2"] %>],['良い',<%= @nikoniko_summary["3"] %>]]]
+            app.nikonikoSummary = [[
+                ['<%= l(:nikoniko_feel_good) %>',<%= @nikoniko_summary["3"] %>],
+                ['<%= l(:nikoniko_feel_ordinary) %>',<%= @nikoniko_summary["2"] %>],
+                ['<%= l(:nikoniko_feel_bad) %>',<%= @nikoniko_summary["1"] %>],
+                ['<%= l(:nikoniko_feel_nil) %>',<%= @nikoniko_summary["0"] %>]
+            ]]
             </script>
         </div>
         <div class="splitcontentright">
             <table class="list">
                 <tr class="odd">
-                    <td width="20%"><%= image_tag("nikoniko_0.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "未登録") %></td>
-                    <td width="auto"><%= @nikoniko_summary["0"] %>日</td>
+                    <td width="20%"><%= image_tag("nikoniko_3.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => l(:nikoniko_feel_good)) %></td>
+                    <td width="auto"><%= @nikoniko_summary["3"] %> <%= l(:label_day_plural) %></td>
                 </tr>
                 <tr class="even">
-                    <td><%= image_tag("nikoniko_1.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "悪い") %></td>
-                    <td><%= @nikoniko_summary["1"] %>日</td>
+                    <td><%= image_tag("nikoniko_2.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => l(:nikoniko_feel_ordinary)) %></td>
+                    <td><%= @nikoniko_summary["2"] %> <%= l(:label_day_plural) %></td>
                 </tr>
                 <tr class="odd">
-                    <td><%= image_tag("nikoniko_2.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "普通") %></td>
-                    <td><%= @nikoniko_summary["2"] %>日</td>
+                    <td><%= image_tag("nikoniko_1.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => l(:nikoniko_feel_bad)) %></td>
+                    <td><%= @nikoniko_summary["1"] %> <%= l(:label_day_plural) %></td>
                 </tr>
                 <tr class="even">
-                    <td><%= image_tag("nikoniko_3.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => "良い") %></td>
-                    <td><%= @nikoniko_summary["3"] %>日</td>
+                    <td><%= image_tag("nikoniko_0.png", :plugin => 'redmine_nikoniko_calendar2', :width => "32", :height => "32", :alt => l(:nikoniko_feel_nil)) %></td>
+                    <td><%= @nikoniko_summary["0"] %> <%= l(:label_day_plural) %></td>
                 </tr>
             </table>
         </div>

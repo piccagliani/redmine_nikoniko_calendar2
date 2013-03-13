@@ -1,13 +1,12 @@
 table.cal {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 table.cal tbody tr {
     height: auto;
 }
 
-table.cal thead th,
-table.cal tbody td {
+table.cal thead th, table.cal tbody td {
     text-align: center;
     width: 40px;
     padding: 0;
@@ -17,13 +16,11 @@ table.cal tbody td {
     margin-top: 1px;
 }
 
-.fixedHead table,
-.fixedTable table {
+.fixedHead table, .fixedTable table {
     border-collapse: collapse;
 }
 
-.fixedHead td,
-.fixedTable td {
+.fixedHead td, .fixedTable td {
     padding: 0;
     border: 1px solid #d7d7d7;
     vertical-align: middle;
@@ -48,10 +45,10 @@ table.cal tbody td {
     display: block;
 }
 
-td.Sat {
+td.Sat, div.Sat {
     background-color: #F0F8FF;
 }
 
-td.Sun {
+td.Sun, div.Sun {
     background-color: #FFF0F5;
 }

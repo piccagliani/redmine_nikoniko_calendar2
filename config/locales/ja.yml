@@ -1,3 +1,11 @@
 ja:
   nikoniko_calendar: "ニコニコカレンダー"
   nikoniko_calendar_short: "ニコカレ"
+  nikoniko_calendar_history: "ニコニコ履歴"
+  nikoniko_score: "ニコニコスコア"
+  nikoniko_score_unit: "ニコ"
+  nikoniko_summary: "ニコニコサマリ"
+  nikoniko_feel_nil: "未登録"
+  nikoniko_feel_good: "良い"
+  nikoniko_feel_ordinary: "普通"
+  nikoniko_feel_bad: "悪い"
