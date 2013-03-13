@@ -18,7 +18,7 @@ Redmine::Plugin.register :redmine_nikoniko_calendar2 do
   name 'Redmine Niko-niko Calendar2 plugin'
   author 'piccagliani'
   description 'Niko-niko Calendar plugin for Redmine 2.X'
-  version '0.0.1'
+  version '0.1.0'
   url 'https://github.com/piccagliani/redmine_nikoniko_calendar2'
 
   menu :account_menu, :nikoniko_calendar, { :controller => 'nikoniko_calendar', :action => 'index' }, :caption => :nikoniko_calendar, :after => :my_account

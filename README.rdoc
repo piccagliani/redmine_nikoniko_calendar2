@@ -1,3 +1,37 @@
 = redmine_nikoniko_calendar2
 
 Niko-niko Calendar plugin for Redmine 2.X
+
+== What is Niko-niko Calendar?
+<em>"Niko-cale is a tool that makes visible as for the mood of the team, member's feelings, the motivation, and morale. Niko-niko Calendar might be called by the name of niko-cale."</em>
+
+by http://www.geocities.jp/nikonikocalendar/index_en.html
+
+For more information, please visit the page.
+
+== Requirements
+Redmine(>=2.0.0)
+
+Tested with:
+ Environment:
+   Redmine version                          2.1.2.stable
+   Ruby version                             1.9.3 (i386-linux)
+   Rails version                            3.2.8
+   Environment                              production
+   Database adapter                         Mysql2
+
+== Installation 
+1. cd /path/to/redmine/plugins
+2. git clone https://github.com/piccagliani/redmine_nikoniko_calendar2.git
+3. cd /path/to/redmine
+4. rake redmine:plugins:migrate NAME=redmine_nikoniko_calendar2
+5. restart redmine
+
+== Uninstallation
+1. cd /path/to/redmine
+2. rake redmine:plugins:migrate NAME=redmine_nikoniko_calendar2 VERSION=0
+3. cd /path/to/redmine/plugins
+4. restart redmine
+
+== License
+Released under GNU General Public License version 3
