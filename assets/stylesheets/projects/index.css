@@ -38,11 +38,14 @@ table.cal thead th, table.cal tbody td {
 }
 .fixedTable td.member {
     padding-left: 2px;
-    background-color: #EEEEEE;
 }
 
 .fixedTable td a {
     cursor: default;
+}
+
+.fixedTable td.member a {
+    cursor: pointer;
 }
 
 #sidebar label {
@@ -56,8 +59,6 @@ td.Sat, div.Sat {
 td.Sun, div.Sun {
     background-color: #FFF0F5;
 }
-
-
 
 div.tooltip:hover span.tip {
     width: 15em;

@@ -45,15 +45,15 @@ next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
         </tr>
     </thead>
     <tbody>
-        <% @members.each do |member| %>
-        <tr>
-            <td class="member"><%= link_to member, user_path(:id => member.id) %></td>
+        <% @members.each_with_index do |member, index| %>
+        <tr class="<%= index %>">
+            <td class="member <%= index % 2 == 0 ? "odd" : "even" %>"><%= link_to member, user_path(:id => member.id) %></td>
             <% 
             day = @calendar.startdt
             while day <= @calendar.enddt
             %>
                 <% if day.beginning_of_month == @target_month %>
-            <td class="<%= day.strftime("%a") %>">
+            <td class="<%= day.strftime("%a") %> <%= index % 2 == 0 ? "odd" : "even" %>">
                     <% if day <= @today %>
                 <div class="tooltip">
                         <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][day.to_s]) == nil%>
