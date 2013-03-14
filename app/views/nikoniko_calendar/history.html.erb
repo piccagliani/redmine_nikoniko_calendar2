@@ -42,12 +42,16 @@ while day <= @calendar.enddt
 <%= ("<td class='week-number' title='#{ l(:label_week) }'>#{(day+(11-day.cwday)%7).cweek}</td>".html_safe) if day.cwday == @calendar.first_wday %>
 <td class="<%= day.month==@calendar.month ? 'even' : 'odd' %><%= ' today' if Date.today == day %>">
 <p class="day-num"><%= day.day %></p>
+<div class="tooltip">
 <% if (history = @nikoniko_history[day.to_s]) != nil %>
 <% history.niko = "0" if history.niko == "" %>
-<a class="nikoniko_history" href="#<%= day.to_s %>" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
+<a class="nikoniko_history" href="#<%= day.to_s %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
+<span class="tip"><%= h history.comment %></span>
 <% elsif day <= @today %>
 <a class="nikoniko_history" href="#<%= day.to_s %>"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
+<span class="tip niko0"><%= l(:nikoniko_feel_nil) %></span>
 <% end %>
+</div>
 </td>
 <%= '</tr><tr>'.html_safe if day.cwday==@calendar.last_wday and day!=@calendar.enddt %>
 <% 

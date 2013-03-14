@@ -41,6 +41,10 @@ table.cal thead th, table.cal tbody td {
     background-color: #EEEEEE;
 }
 
+.fixedTable td a {
+    cursor: default;
+}
+
 #sidebar label {
     display: block;
 }
@@ -51,4 +55,10 @@ td.Sat, div.Sat {
 
 td.Sun, div.Sun {
     background-color: #FFF0F5;
+}
+
+
+
+div.tooltip:hover span.tip {
+    width: 15em;
 }

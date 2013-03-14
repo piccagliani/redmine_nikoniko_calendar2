@@ -38,3 +38,6 @@
     border: 1px solid #e4e4e4;
 }
 
+div.tooltip:hover span.tip {
+    width: 15em;
+}

@@ -53,16 +53,22 @@ next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
             while day <= @calendar.enddt
             %>
                 <% if day.beginning_of_month == @target_month %>
-                <% if day <= @today %>
-                    <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][day.to_s]) == nil%>
-            <td class="<%= day.strftime("%a") %>"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "36", :height => "36", :plugin => "redmine_nikoniko_calendar2" %></td>
-                    <% else %>
+            <td class="<%= day.strftime("%a") %>">
+                    <% if day <= @today %>
+                <div class="tooltip">
+                        <% if @nikoniko_histories[member.id] == nil or (history = @nikoniko_histories[member.id][day.to_s]) == nil%>
+                    <%= image_tag "nikoniko_0.png", :class => "niko", :width => "36", :height => "36", :plugin => "redmine_nikoniko_calendar2" %>
+                    <span class="tip"><%= l(:nikoniko_feel_nil) %></span>
+                        <% else %>
                         <% history.niko = "0" if history.niko == "" %>
-            <td class="<%= day.strftime("%a") %>"><a href="javascript:void(0);" title="<%= h history.comment %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "36", :height => "36", :plugin => "redmine_nikoniko_calendar2" %></a></td>
+                    <a href="javascript:void(0);"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "36", :height => "36", :plugin => "redmine_nikoniko_calendar2" %></a>
+                    <span class="tip"><%= h history.comment %></span>
+                        <% end %>
+                </div>
+                    <% else %>
+                <%= image_tag "spacer.gif", :class => "niko", :width => "36", :height => "36", :alt => "", :plugin => "redmine_nikoniko_calendar2" %>
                     <% end %>
-                <% else %>
-            <td class="<%= day.strftime("%a") %>"><%= image_tag "spacer.gif", :class => "niko", :width => "36", :height => "36", :alt => "", :plugin => "redmine_nikoniko_calendar2" %></td>
-                <% end %>
+            </td>
                 <% end %>
             <%
             day = day + 1 

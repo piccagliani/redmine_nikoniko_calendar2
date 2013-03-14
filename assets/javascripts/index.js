@@ -58,7 +58,10 @@ NikoCal.Index = function() {
         showUpdateForm : function(e) {
             var date = $(this).attr("href").substring(1);
             var image = $("img", this).attr("src").replace(/\?.*$/, "");
-            var comment = $(this).attr("title") === "未登録" ? "" : $(this).attr("title");
+            var comment = $(this).next().html();
+            if ($(this).next().hasClass("niko0")) {
+                comment = "";
+            }
             $("img", "#NikonikoUpdateForm").each(function() {
                 $(this).attr("src").indexOf(image) === 0 ? $(this).css("display", "") : $(this).css("display", "none");
             });
@@ -127,7 +130,12 @@ NikoCal.Index = function() {
 
         renderSummaryChart : function() {
             $.jqplot('NikonikoSummary', app.nikonikoSummary, {
-                seriesColors : ["#48B1F2", "#EEEE07", "#434343", "#E0E0E0"],
+                seriesColors : [
+                    "#48B1F2", // Good
+                    "#EEEE07", // Ordinary
+                    "#434343", // Bad
+                    "#E0E0E0"  // Not Registered
+                ],
                 seriesDefaults : {
                     renderer : jQuery.jqplot.PieRenderer
                 },
