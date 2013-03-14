@@ -62,7 +62,13 @@ next_label = @next_month.year.to_s + "-" + @next_month.month.to_s + " »"
                         <% else %>
                         <% history.niko = "0" if history.niko == "" %>
                     <a href="javascript:void(0);"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "36", :height => "36", :plugin => "redmine_nikoniko_calendar2" %></a>
-                    <span class="tip"><%= h history.comment %></span>
+                    <span class="tip">
+                        <% if 0 < history.comment.length %>
+                        <%= h history.comment %>
+                        <% else %>
+                        (<%= l(:nikoniko_feel_no_comment)%>)
+                        <% end %>
+                    </span>
                         <% end %>
                 </div>
                     <% else %>

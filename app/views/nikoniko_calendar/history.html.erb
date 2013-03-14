@@ -46,7 +46,13 @@ while day <= @calendar.enddt
 <% if (history = @nikoniko_history[day.to_s]) != nil %>
 <% history.niko = "0" if history.niko == "" %>
 <a class="nikoniko_history" href="#<%= day.to_s %>"><%= image_tag "nikoniko_" + history.niko + ".png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
-<span class="tip"><%= h history.comment %></span>
+<span class="tip">
+<% if 0 < history.comment.length %>
+<%= h history.comment %>
+<% else %>
+(<%= l(:nikoniko_feel_no_comment)%>)
+                        <% end %>
+</span>
 <% elsif day <= @today %>
 <a class="nikoniko_history" href="#<%= day.to_s %>"><%= image_tag "nikoniko_0.png", :class => "niko", :width => "64", :height => "64", :plugin => "redmine_nikoniko_calendar2" %></a>
 <span class="tip niko0"><%= l(:nikoniko_feel_nil) %></span>
