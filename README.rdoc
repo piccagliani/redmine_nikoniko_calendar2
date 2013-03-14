@@ -10,7 +10,7 @@ by http://www.geocities.jp/nikonikocalendar/index_en.html
 For more information, please visit the page.
 
 == Requirements
-Redmine(>=2.0.0)
+Redmine(>=2.1.0)
 
 Tested with:
  Environment:
