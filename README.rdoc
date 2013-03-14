@@ -20,6 +20,7 @@ Tested with:
    Environment                              production
    Database adapter                         Mysql2
 
+
  Environment:
    Redmine version                          2.2.0.stable
    Ruby version                             1.9.3 (x86_64-linux)
