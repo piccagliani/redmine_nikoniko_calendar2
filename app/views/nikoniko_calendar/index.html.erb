@@ -24,6 +24,9 @@
 <%= javascript_include_tag "vendor/excanvas.js", :plugin => 'redmine_nikoniko_calendar2' %>
 <![endif]-->
 <%= javascript_include_tag "common", "index",:plugin => 'redmine_nikoniko_calendar2' %>
+<script type="text/javascript">
+NikoCal.relative_url_root = "<%= Redmine::Utils::relative_url_root %>";
+</script>
 <% end %>
 
 <% if false %> ######## MAIN CONTENTS <% end %>

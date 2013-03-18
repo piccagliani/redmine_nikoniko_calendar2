@@ -29,7 +29,7 @@ NikoCal.Index = function() {
         },
 
         renderHistory : function(year, month) {
-            var url = "/nikoniko_calendar/history";
+            var url = NikoCal.relative_url_root + "/nikoniko_calendar/history";
             if (year !== undefined && month !== undefined) {
                 url += "/" + year + "/" + month;
             }
@@ -88,7 +88,7 @@ NikoCal.Index = function() {
             var current = $("img:visible", "#NikonikoUpdateForm");
             var niko = current.attr("src").match(/nikoniko_([0-3]{1})\.png/)[1];
             $.ajax({
-                url : "/nikoniko_calendar/post",
+                url : NikoCal.relative_url_root + "/nikoniko_calendar/post",
                 type : "post",
                 cache : false,
                 data : {
