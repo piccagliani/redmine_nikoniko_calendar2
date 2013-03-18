@@ -20,6 +20,14 @@ Tested with:
    Environment                              production
    Database adapter                         Mysql2
 
+
+ Environment:
+   Redmine version                          2.2.0.stable
+   Ruby version                             1.9.3 (x86_64-linux)
+   Rails version                            3.2.9
+   Environment                              development
+   Database adapter                         Mysql2
+
 == Installation 
 1. cd /path/to/redmine/plugins
 2. git clone https://github.com/piccagliani/redmine_nikoniko_calendar2.git
