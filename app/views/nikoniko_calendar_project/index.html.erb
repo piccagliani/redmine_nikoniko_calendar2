@@ -26,7 +26,7 @@
 
 </div>
 <% content_for :sidebar do %>
-<h3>ロール</h3>
+<h3><%= l(:label_role) %></h3>
 <% for role in @roles %>
 <label><input type="checkbox" name="role" value="<%= role.id %>" /><%= h role.name %></label>
 <% end %>
