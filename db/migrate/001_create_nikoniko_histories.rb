@@ -11,7 +11,11 @@ class CreateNikonikoHistories < ActiveRecord::Migration
     add_index :nikoniko_histories, [:user_id, :date], :unique => true
     
     # add foreign key
-    execute "ALTER TABLE nikoniko_histories ADD CONSTRAINT `fk_:nikoniko_histories_on_user_id` FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE"
+    begin
+      execute "ALTER TABLE nikoniko_histories ADD CONSTRAINT `fk_:nikoniko_histories_on_user_id` FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE"
+    rescue ActiveRecord::StatementInvalid 
+      puts "[INFO] ADD CONSTRAINT Skipped."
+    end
   end
   
   def down
